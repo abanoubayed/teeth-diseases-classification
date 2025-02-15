@@ -6,8 +6,6 @@ from tensorflow.keras.preprocessing import image
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 import os
 
-target_shape = (224,224)
-
 # Load the trained Keras model
 @st.cache_resource
 def load_model():
@@ -29,6 +27,8 @@ map_dict = {
     6: 'OT (Oral Thrush)'
 }
 
+target_shape = (224,224)
+
 img_ = ImageDataGenerator(rescale=1 / 255.)
 
 if uploaded_file is not None:
@@ -41,10 +41,12 @@ if uploaded_file is not None:
 
     st.image(cv_img, channels="RGB")
 
-    genrate_pred = st.button("Generate Prediction")
-    if genrate_pred:
-        prediction = model.predict(img_reshape).argmax()
-        st.title("The predicted disease for this image is: {}".format(map_dict [prediction]))
-
-
+    generate_pred = st.button("Generate Prediction")
+    if generate_pred:
+        predictions = model.predict(img_reshape)
+        predicted_class = np.argmax(predictions)
+        confidence = np.max(predictions) * 100 
+        
+        st.title("The predicted disease for this image is: {}".format(map_dict [predicted_class]))
+        st.write("Confidence: {:.2f}%".format(confidence))
 
