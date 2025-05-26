@@ -1,70 +1,95 @@
-# 🦷 Teeth Classification Project
+# 🦷 Teeth Diseases Classification
 
 ## 📌 Objective
 
-This project aims to develop a robust computer vision solution for **classifying dental images into 7 distinct categories**. This classification is part of our AI-driven healthcare initiative, designed to **enhance diagnostic accuracy** and **improve patient outcomes** through advanced machine learning techniques.
+This project aims to develop a powerful and efficient **computer vision model for classifying dental diseases** from clinical images. Accurate classification of dental diseases such as **CaS, CoS, Gum, MC, OC, OLP, and OT** is vital for supporting AI-driven healthcare systems that assist in early diagnosis and treatment planning, ultimately **enhancing diagnostic accuracy and improving patient outcomes**.
 
-The full pipeline includes:
+The pipeline includes:
 
-* Image preprocessing
-* Dataset visualization and augmentation
-* Model development and training
-* Performance evaluation
+* Image preprocessing and augmentation
+* Dataset visualization
+* Baseline and advanced model development
+* Model Optimization and Transfer Learning
+* Deployment using Streamlit
+
+---
+
+## 🗂️ Dataset
+
+The dataset used is a subset of the **MOD (Medical Oral Dataset)**, which contains images labeled across 7 classes:
+
+* **CaS** – Canker Sores
+* **CoS** – Cold Sores 
+* **Gum** – Gingivostomatitis
+* **MC** – Mouth Cancer
+* **OC** – Oral Cancer 
+* **OLP** – Oral Lichen Planus
+* **OT** – Oral Thrush 
+
+### Dataset Splitting
+
+* **60%** for training: 3,087 images
+* **20%** for validation: 1,028 images
+* **20%** for testing: 1,028 images
+* **Total before augmentation**: 5,143 images
 
 ---
 
 ## 🧼 1. Preprocessing
 
-The preprocessing step ensures the dataset is in optimal condition for training:
+Preprocessing steps ensure the dataset is clean and ready for modeling:
 
-* **Normalization**: Pixel values are scaled to a consistent range to stabilize training.
-* **Resizing**: All images are resized to a uniform size for model compatibility.
-* **Augmentation**: Includes horizontal flips, rotations, zoom, and brightness adjustments to artificially expand the dataset and improve generalization.
-
-Before and after augmentation samples are displayed to verify transformation quality.
+* **Normalization**: Scales pixel values to \[0, 1]
+* **Resizing**: All images are resized uniformly
+* **Augmentation**: Includes rotation, zoom, brightness adjustments, and flipping to improve robustness and reduce overfitting
 
 ---
 
 ## 📊 2. Visualization
 
-Understanding the dataset distribution is key to robust training. This includes:
+To better understand the data:
 
-* Visual inspection of a sample of raw and augmented images.
-* **Class distribution plots** to detect any imbalance across the 7 categories.
-
-This step helps guide preprocessing and training decisions.
-
----
-
-## 🧠 3. Model Architecture & Training
-
-* The model is built from scratch using **TensorFlow (Keras)**.
-* Architecture includes:
-
-  * Multiple **Conv2D** layers with ReLU activations
-  * **MaxPooling** and **Dropout** layers to reduce overfitting
-  * A final **Dense softmax layer** for multiclass classification
-* The model is compiled with:
-
-  * `categorical_crossentropy` loss
-  * `Adam` optimizer
-  * Accuracy as the main metric
-
-Training is performed using:
-
-* 70% of the data for training
-* 15% for validation
-* 15% for testing
-
-**Callbacks** like EarlyStopping and ModelCheckpoint are used to prevent overfitting and retain the best model.
+* Distribution of each disease category is visualized
+* Pre- and post-augmentation image samples are displayed
+* These visualizations confirm data balance and preprocessing effectiveness
 
 ---
 
-## 📈 Results & Evaluation
+## 🧠 3. Model Development & Training
 
-* Training and validation accuracy and loss curves are plotted to monitor learning.
-* The test set is used to evaluate the final model performance.
-* A classification report and confusion matrix help assess per-class performance.
+### 🏗️ Baseline CNN Model
+
+* Built using TensorFlow/Keras from scratch
+* Consists of multiple Conv2D, MaxPooling, Dropout, and Dense layers
+* Trained for multi-class classification with categorical cross-entropy loss
+
+✅ **Achieved 97% accuracy on the test set**, establishing a strong baseline.
 
 ---
+
+## 🔁 4. Fine-tuning with MobileNetV2
+
+To improve accuracy and efficiency, **MobileNetV2** was fine-tuned:
+
+* Pretrained weights used with custom classification head
+* Retrained on our dataset with fine-tuning enabled
+
+📈 **Results**:
+
+* **Accuracy:** 99.7%
+* **Model complexity reduced by 81.4%**, making it significantly more lightweight and faster for deployment
+
+---
+
+## 🚀 5. Deployment
+
+The final model was deployed using **Streamlit** for easy and interactive use.
+
+### 🔬 Deployment Testing:
+
+* Evaluated on the 1,028-image test set
+* **Correctly diagnosed 1,026 out of 1,028 images**
+
+The Streamlit app enables users to upload dental images and get **instant disease predictions**, making it suitable for both clinical and educational settings.
+
 
