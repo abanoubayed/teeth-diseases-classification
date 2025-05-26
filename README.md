@@ -52,6 +52,7 @@ To better understand the data:
 * Distribution of each disease category is visualized
 * Pre- and post-augmentation image samples are displayed
 * These visualizations confirm data balance and preprocessing effectiveness
+![samples](https://github.com/user-attachments/assets/7c5337e7-dc6f-4abe-bb4c-615f801c3ed8)
 
 ---
 
