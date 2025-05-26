@@ -41,7 +41,7 @@ Preprocessing steps ensure the dataset is clean and ready for modeling:
 
 * **Normalization**: Scales pixel values to \[0, 1]
 * **Resizing**: All images are resized uniformly
-* **Augmentation**: Includes rotation, zoom, brightness adjustments, and flipping to improve robustness and reduce overfitting
+* **Augmentation**: Using `ImageDataGenerator`, Includes rotation, zoom, brightness adjustments, and flipping to improve robustness and reduce overfitting
 
 ---
 
@@ -61,7 +61,7 @@ To better understand the data:
 
 * Built using TensorFlow/Keras from scratch
 * Consists of multiple Conv2D, MaxPooling, Dropout, and Dense layers
-* Trained for multi-class classification with categorical cross-entropy loss
+* Trained for multi-class classification with `categorical_crossentropy` loss and `Adam` optimizer
 
 ✅ **Achieved 97% accuracy on the test set**, establishing a strong baseline.
 
@@ -83,7 +83,7 @@ To improve accuracy and efficiency, **MobileNetV2** was fine-tuned:
 
 ## 🚀 5. Deployment
 
-The final model was deployed using **Streamlit** for easy and interactive use.
+The final model was deployed using **Streamlit** for easy and interactive use. 
 
 ### 🔬 Deployment Testing:
 
