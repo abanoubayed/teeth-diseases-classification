@@ -52,6 +52,7 @@ To better understand the data:
 * Distribution of each disease category is visualized
 * Pre- and post-augmentation image samples are displayed
 * These visualizations confirm data balance and preprocessing effectiveness
+  
 ![samples](https://github.com/user-attachments/assets/7c5337e7-dc6f-4abe-bb4c-615f801c3ed8)
 
 ---
@@ -93,4 +94,6 @@ The final model was deployed using **Streamlit** for easy and interactive use.
 
 The Streamlit app enables users to upload dental images and get **instant disease predictions**, making it suitable for both clinical and educational settings.
 
+![Screenshot 2025-05-26 222129](https://github.com/user-attachments/assets/466e01d5-287c-4077-afad-bb6b2de0801b)
 
+![Screenshot 2025-05-26 222028](https://github.com/user-attachments/assets/0b3cfe55-63d3-40ad-b663-91d792016005)
